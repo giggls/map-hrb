@@ -6,4 +6,6 @@ if ! [ $# -eq 1 ]; then
   exit 1
 fi
 
-sed -e 's/planet_osm_/view_osmhrb_/g' $1 >osm-hrb.xml
+dir=$(dirname "$1")
+
+sed -e 's/planet_osm_/view_osmhrb_/g' $1 > "$dir/osm-hrb.xml"
