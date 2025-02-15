@@ -51,3 +51,6 @@ SELECT
 FROM planet_osm_line;
 
 GRANT select ON view_osmhrb_line to public;
+
+CREATE INDEX view_osmhrb_line_label ON planet_osm_line USING GIST (way) WHERE COALESCE(tags->'name:hsb',tags->'name:dsb',name) IS NOT NULL OR ref IS NOT NULL;
+

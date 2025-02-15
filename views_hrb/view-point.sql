@@ -37,3 +37,6 @@ SELECT
 FROM planet_osm_point;
 
 GRANT select ON view_osmhrb_point TO public;
+
+CREATE INDEX view_osmhrb_point_place ON planet_osm_point USING GIST (way) WHERE place IS NOT NULL AND COALESCE(tags->'name:hsb',tags->'name:dsb',name) IS NOT NULL;
+
